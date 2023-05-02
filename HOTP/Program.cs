@@ -5,13 +5,14 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        byte[] key = Encoding.UTF8.GetBytes("8EjsRNNE5f4Kd2sELR3G1eLq9up5Kj2VofTnUfiyCUDUXaeWwvyc7WP9dlul");
-        ulong counter = 144L;
+        string key = "8EjsRNNE5f4Kd2sELR3G1eLq9up5Kj2VofTnUfiyCUDUXaeWwvyc7WP9dlul";
+        long counter = Random.Shared.NextInt64();
 
-        string hotpCode = HOTPComputation.ComputeHOTP(key, counter);
+        string hotpCode = HOTPComputation.ComputeHOTP(Encoding.UTF8.GetBytes(key), counter);
+        Console.WriteLine($"Key : {key}");
+        Console.WriteLine($"Counter : {counter}");
+        Console.WriteLine($"OTP : {hotpCode}");
 
-        Console.WriteLine("DIY :");
-        Console.WriteLine(hotpCode);
         Console.ReadLine();
     }
 }
