@@ -9,7 +9,7 @@ namespace HOTP
 
         public static string ComputeHOTP(byte[] key, long counter)
         {
-            byte[] byteCounter = GetBigEndianBytes(counter);
+            byte[] byteCounter = GetBytesAsBigEndian(counter);
 
             byte[] hashedData = HMACSHA1.HashData(key, byteCounter);
 
@@ -21,7 +21,7 @@ namespace HOTP
             return (value % Math.Pow(10, OtpLength)).ToString();
         }
 
-        private static byte[] GetBigEndianBytes(long counter)
+        private static byte[] GetBytesAsBigEndian(long counter)
         {
             byte[] byteCounter = BitConverter.GetBytes(counter);
             Array.Reverse(byteCounter);
