@@ -5,7 +5,8 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        string key = "8EjsRNNE5f4Kd2sELR3G1eLq9up5Kj2VofTnUfiyCUDUXaeWwvyc7WP9dlul";
+        //Test values
+        string key = RandomString.GetRandomString(60);
         long counter = Random.Shared.NextInt64();
 
         string hotpCode = HOTPComputation.ComputeHOTP(Encoding.UTF8.GetBytes(key), counter);
